@@ -1,0 +1,24 @@
+**install mongoose:
+npm install mongoose --save
+
+** chia code thành 3 phần: router - database - controller
+router sẽ liên quan đến api
+database sẽ liên quan đến truy cập vào mongodb
+controller sẽ liên quan đến logic
+
+** vận dụng lại kiến thức về middleware
+
+** xử lý ảnh trong mongodb. ở đây ta sử dụng cách lưu trữ ảnh vào mục assets rồi gửi link đường dẫn lên môngdb
+    * npm i multer
+    * middleware này giúp xử lý dữ liệu ko thuộc dạng json (ở bài này chưa cần dùng): app.use(express.urlencoded({extended: true}));
+    * sử dụng thư viện path của nodejs để hỗ trợ trỏ đến địa chỉ thư mục mong muốn: 
+    const path = require("path") 
+        path.join(__dirname, "../assets") 
+        // __dirname in a node script returns the path of the folder where the current JavaScript file resides
+    * ở trong Postman:
+        + truyền dữ liệu request ở Body
+        + chọn dạng dữ liệu form-data
+        + "key" là fieldname - tên trường dữ liệu (nhớ bấm mũi tên xuống, chọn dạng dữ liệu là file )
+        + value là hình ảnh
+
+** thường ta sẽ sử dụng những dịch vụ lưu trữ ảnh như firebase, amazon để lưu trữ ảnh, thay vì multer
