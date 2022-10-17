@@ -5,6 +5,7 @@ const {authMdw, requireAdmin} = require('../middleware/authMdw');
 
 router.get('/', authMdw, requireAdmin, async (req,res) => {
     const admin = await getUser();
+    res.header("Access-Control-Allow-Origin", "*");
     res.json(admin);
 });
 
